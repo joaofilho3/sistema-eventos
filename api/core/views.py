@@ -19,3 +19,10 @@ class IngressoViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(comprador=self.request.user)
+
+from django.shortcuts import render
+from .models import Evento
+
+def eventos_front(request):
+    eventos = Evento.objects.all()
+    return render(request, 'core/eventos.html', {'eventos': eventos})

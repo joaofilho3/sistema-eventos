@@ -68,6 +68,10 @@ TEMPLATES = [
     },
 ]
 
+STATICFILES_DIRS = [
+    BASE_DIR / 'core' / 'static',
+]
+
 WSGI_APPLICATION = 'sistema_eventos.wsgi.application'
 
 

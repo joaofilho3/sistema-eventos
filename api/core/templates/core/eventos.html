@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Eventos</title>
+</head>
+<body>
+    <h1>Lista de Eventos</h1>
+    <ul>
+        {% for evento in eventos %}
+        <li>{{ evento.nome }} - {{ evento.data }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

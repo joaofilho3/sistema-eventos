@@ -1,0 +1,19 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.venv/
+
+# Database
+db.sqlite3
+
+# pytest cache
+.pytest_cache/
+
+# Django migrations (opcional, mas geralmente sim)
+core/migrations/__pycache__/
+core/migrations/*.py[cod]
+
