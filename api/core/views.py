@@ -1,16 +1,21 @@
-from django.http import HttpResponse
-
-def home(request):
-    return HttpResponse("Bem-vindo à API de Eventos!")
-
-from rest_framework import viewsets
-from .models import Evento, Participante
-from .serializers import EventoSerializer, ParticipanteSerializer
+from rest_framework import viewsets, permissions
+from .models import Evento, Lote, Ingresso
+from .serializers import EventoSerializer, LoteSerializer, IngressoSerializer
 
 class EventoViewSet(viewsets.ModelViewSet):
     queryset = Evento.objects.all()
     serializer_class = EventoSerializer
+    permission_classes = [permissions.AllowAny]
 
-class ParticipanteViewSet(viewsets.ModelViewSet):
-    queryset = Participante.objects.all()
-    serializer_class = ParticipanteSerializer
+class LoteViewSet(viewsets.ModelViewSet):
+    queryset = Lote.objects.all()
+    serializer_class = LoteSerializer
+    permission_classes = [permissions.AllowAny]
+
+class IngressoViewSet(viewsets.ModelViewSet):
+    queryset = Ingresso.objects.all()
+    serializer_class = IngressoSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def perform_create(self, serializer):
+        serializer.save(comprador=self.request.user)
